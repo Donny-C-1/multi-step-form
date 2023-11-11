@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <title>Frontend Mentor | Multi-step form</title>
+  <meta charset='utf-8' />
+  <meta name='author' content='Donny C' />
+  <meta name='description' content='A simple multi-step form component' />
+  <meta name='keywords' content='frontendmentor, form' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+  <link rel='icon' type='image/png' sizes='32x32' href='./assets/images/favicon-32x32.png' />
+  <link rel='stylesheet' href='./css/style.css' />
+  <script src='./js/script.js' defer></script>
+</head>
+
+<body>
+
+  <!--#region-->
+  <!--,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,-->
+  <!--..dddddddd...................................................................................................cccccc............................-->
+  <!--..dddd.dddd...............................................................................................ccccccccccc..........................-->
+  <!--..dddd..dddd.............................................................................................ccc........ccc........................-->
+  <!--..dddd....dddd.........................................................................................ccc...........ccc.......................-->
+  <!--..dddd.....dddd.......................................................................................ccc......................................-->
+  <!--..dddd.......dddd....................................................................................ccc.......................................-->
+  <!--..dddd........dddd..........ooooooo.......nnn..nnnnnn........nnn..nnnnnn.......yyy......yyy..........ccc.......................................-->
+  <!--..dddd..........dddd......ooooooooooo.....nnnnnnnnnnnnn......nnnnnnnnnnnnn.....yyy......yyy..........ccc.......................................-->
+  <!--..dddd...........dddd....ooo.......ooo....nnnn.......nnn.....nnnn......nnn.....yyy......yyy...........ccc............ccc.......................-->
+  <!--..dddd...........dddd....ooo.......ooo....nnn........nnn.....nnn.......nnn.....yyy......yyy.............ccc........ccc.........................-->
+  <!--..dddddddddddddddddddd....ooooooooooo.....nnn........nnn.....nnn.......nnn......yyy...yyyyy...............ccccccccccc..........................-->
+  <!--..dddddddddddddddddddd......ooooooo.......nnn........nnn.....nnn.......nnn.......yyyyyy.yyy.................cccccc.............................-->
+  <!--........................................................................................yyy....................................................-->
+  <!--........................................................................................yyy....................................................-->
+  <!--........................................................................................yyy....................................................-->
+  <!--,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,-->
+  <!--#endregion-->
+
+  <main>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <ul class="form-nav">
+        <li><button type="button" data-toggle="tab" class="active">1</button>
+          <div class="tab-item">
+            <p class="tab-step">Step 1</p>
+            <p class="tab-text">Your Info</p>
+          </div>
+        </li>
+        <li><button type="button" data-toggle="tab">2</button>
+          <div class="tab-item">
+            <p class="tab-step">Step 2</p>
+            <p class="tab-text">Select Plan</p>
+          </div>
+        </li>
+        <li><button type="button" data-toggle="tab">3</button>
+          <div class="tab-item">
+            <p class="tab-step">Step 3</p>
+            <p class="tab-text">ADD ONS</p>
+          </div>
+        </li>
+        <li>
+          <button type="button" data-toggle="tab">4</button>
+          <div class="tab-item">
+            <p class="tab-step">Step 4</p>
+            <p class="tab-text">Summary</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Form -->
+    <form action="./" method="post" name="gaming-subscription" autofocus>
+      <div class="form-content">
+        <section class="tab personal-info" data-name="tab" hidden>
+          <h2 class="heading">Personal Info</h2>
+          <p class="sub-heading">Please provide your name, email, address, and phone number.</p>
+
+          <label for="user-name">
+            <span>Name</span>
+            <input type="text" placeholder="e.g. Stephen King" name="name" id="user-name" pattern="[A-z ]+"
+              title="Must contain only letters" required />
+            <span class="error-message">This field is required</span>
+          </label>
+
+          <label for="user-mail">
+            <span>Email Address</span>
+            <input type="email" placeholder="e.g. stephenking@lorem.com" id="user-email" name="email" multiple
+              required />
+            <span class="error-message">This field is required</span>
+          </label>
+
+          <label for="user-phoneNo">
+            <span>Phone Number</span>
+            <input type="tel" placeholder="e.g. +1 234 567 890" id="user-phoneNo" name="phoneNo" required />
+            <span class="error-message">This field is required</span>
+          </label>
+        </section>
+
+        <section class="tab pricing" data-duration="monthly" data-name="tab" hidden>
+          <h2 class="heading">Select you plan</h2>
+          <p class="sub-heading">You have the option of monthly or yearly billing</p>
+          <div>
+            <label for="arcade-pricing-plan">
+              <input type="radio" name="pricing-plan" id="arcade-pricing-plan" value="arcade" required checked />
+              <div class="pricing-plan">
+                <img src="./assets/images/icon-arcade.svg" alt="" />
+                <div>
+                  <p class="plan-name">Arcade</p>
+                  <p class="plan-price"><span class="month-option">$9/mo</span><span class="year-option">$90/yr</span>
+                  </p>
+                  <p class="year-option discount">2 months free</p>
+                </div>
+              </div>
+            </label>
+
+            <label for="advanced-pricing-plan">
+              <input type="radio" name="pricing-plan" id="advanced-pricing-plan" value="advanced" required />
+              <div class="pricing-plan">
+                <img src="./assets/images/icon-advanced.svg" alt="" />
+                <div>
+                  <p class="plan-name">Advanced</p>
+                  <p class="plan-price"><span class="month-option">$12/mo</span><span class="year-option">$120/yr</span>
+                  </p>
+                  <p class="year-option discount">2 months free</p>
+                </div>
+              </div>
+            </label>
+
+            <label for="pro-pricing-plan">
+              <input type="radio" name="pricing-plan" id="pro-pricing-plan" value="pro" required />
+              <div class="pricing-plan">
+                <img src="./assets/images/icon-pro.svg" alt="" />
+                <div>
+                  <p class="plan-name">Pro</p>
+                  <p class="plan-price"><span class="month-option">$15/mo</span><span class="year-option">$150/yr</span>
+                  </p>
+                  <p class="year-option discount">2 months free</p>
+                </div>
+              </div>
+            </label>
+          </div>
+          <div class="choice">
+            <span class="choice-month">Monthly</span>
+            <div class="radio-switch">
+              <input class="switch" type="radio" name="subscription-plan-duration" id="radio-switch-1" value="monthly" checked />
+              <input class="switch" type="radio" name="subscription-plan-duration" id="radio-switch-2" value="yearly">
+              <div class="inner">
+                  <label for="radio-switch-1"></label>
+                  <label for="radio-switch-2"></label>
+                  <div class="inner-circle"></div>
+              </div>
+          </div>
+            <span class="choice-year">Yearly</span>
+          </div>
+        </section>
+
+        <section class="tab add-ons" data-duration="monthly" data-name="tab" hidden>
+          <h2 class="heading">Pick add-ons</h2>
+          <p class="sub-heading">Add-ons help improve your gaming performance</p>
+
+          <label for="add-on-online-service">
+            <input type="checkbox" name="online-service" id="add-on-online-service" value="online-service" data-id="001" />
+            <div class="add-on">
+              <div>
+                <p class="add-on-name">Online Service</p>
+                <p class="add-on-text">Access to multiplayer games</p>
+              </div>
+              <p class="price"><span class="month-option">+$1/mo</span><span class="year-option">+$10/yr</span></p>
+            </div>
+          </label>
+
+          <label for="add-on-larger-storage">
+            <input type="checkbox" name="larger-storage" id="add-on-larger-storage" value="larger-storage" data-id="002" />
+            <div class="add-on">
+              <div>
+                <p class="add-on-name">Larger Storage</p>
+                <p class="add-on-text">Extra 1TB of cloud storage</p>
+              </div>
+              <p class="price"><span class="month-option">+$2/mo</span><span class="year-option">+$20/yr</span></p>
+            </div>
+          </label>
+
+          <label for="add-on-cusotmizable-profile">
+            <input type="checkbox" name="customizable-profile" id="add-on-cusotmizable-profile"
+              value="customizable-profile" data-id="003" />
+            <div class="add-on">
+              <div>
+                <p class="add-on-name">Customizable Profile</p>
+                <p class="add-on-text">Custom theme on your profile</p>
+              </div>
+              <p class="price"><span class="month-option">+$2/mo</span><span class="year-option">+$12/yr</span></p>
+            </div>
+          </label>
+
+        </section>
+
+        <section class="tab summary" data-name="tab" hidden>
+          <h2 class="heading">Finishing up</h2>
+          <p class="sub-heading">Double check everything looks OK before confirming</p>
+          <div>
+            <div class="group">
+              <div class="flex-between">
+                <div>
+                  <h3 data-placeholder="subscription" class="sub-dur">Playboy (Monthly)</h3>
+                  <button type="button" class="change">Change</button>
+                </div>
+                <p class="sub-price">$9/mo</p>
+              </div>
+              
+              <hr />
+              <div class="addOns">
+                <template class="addOn-template">
+                  <div class="flex-between">
+                    <p class="name"></p>
+                    <p class="price"></p>
+                  </div>
+                </template>
+              </div>
+            </div>
+            
+            <div class="flex-between total">
+              <p class="name">Total (per month)</p>
+              <p class="price">$12/mo</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="conclusion" hidden>
+          <img src="./assets/images/icon-thank-you.svg" alt="" />
+          <h2>Thanks</h2>
+          <p>Thanks for confirming your subscription. We hope you have fun using our platform. If you ever need support,
+            please feel free to email us at support@loremgaming.com</p>
+        </section>
+      </div>
+      <div class="form-controls">
+        <button type="button" class="back" data-toggle="prev" hidden>Go Back</button>
+        <button type="button" class="next" data-toggle="next">Next Step</button>
+        <button type="submit" value="submit" class="next" hidden>submit</button>
+      </div>
+    </form>
+  </main>
+
+</body>
+
+</html>
+
+<!-- <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style> -->
+
+
+<!-- <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div> -->

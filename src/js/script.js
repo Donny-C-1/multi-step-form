@@ -1,4 +1,11 @@
-"use strict"
+// import textInput from "../components/text-input/textInput.js";
+import PricingPlan from "../components/pricing-plan/pricing-plan.js";
+import Switch from "../components/switch/switch.js";
+import { formData } from "./state.js";
+
+// customElements.define("text-input", textInput, { extends: "input" });
+customElements.define("pricing-plan", PricingPlan);
+customElements.define("switch-button", Switch);
 
 const addOns = [
     {
@@ -39,7 +46,6 @@ class FormTab {
     #nextButton;
     #submitButton;
     #toggleButtons;
-    #formData;
     #stillValidating;
     
     constructor(containerSelector, formName) {
@@ -53,14 +59,7 @@ class FormTab {
         this.#submitButton = this.#container.querySelector("button[type='submit']");
         this.#toggleButtons = this.#container.querySelectorAll("[data-toggle='tab']");
         this.#stillValidating = true;
-        this.#formData = {
-            name: '',
-            mail: '',
-            number: '',
-            plan: 'arcade',
-            duration: 'monthly',
-            addOns: [],
-        };
+        this.formData = formData;
     }
 
     #dispTab(tabIndex) {
@@ -87,36 +86,33 @@ class FormTab {
         return true;
     }
 
-    #loadPlan() {
-        //
-    }
-
     #loadAddOns() {
-        console.log(this.#formData);
-        this.#container.querySelector('.add-ons').setAttribute("data-duration", this.#formData.duration);
+        console.log(this.formData);
+        this.#container.querySelector('.add-ons').setAttribute("data-duration", this.formData.duration);
     }
     
     #loadSummary() {
+        console.log(this.formData);
         const summaryPage = this.#container.querySelector('.summary');
-        const { plan: p, duration: d } = this.#formData;
+        const { plan: p, duration: d } = this.formData;
 
-        summaryPage.querySelector("[data-placeholder='subscription']").textContent = `${this.#formData.plan} (${this.#formData.duration})`;
+        summaryPage.querySelector("[data-placeholder='subscription']").textContent = `${this.formData.plan} (${this.formData.duration})`;
         summaryPage.querySelector('.sub-price').textContent = this.#getSubPrice();
 
-        if (this.#formData.addOns.length > 0) {
+        if (this.formData.addOns.length > 0) {
             const docFrag = document.createDocumentFragment();
             const addOnTemplate = summaryPage.querySelector('.addOn-template');
             
             docFrag.appendChild(addOnTemplate);
-            for (let idString of this.#formData.addOns) {
+            for (let idString of this.formData.addOns) {
                 const addOnElement = addOnTemplate.content.children[0].cloneNode(true);
                 const addOn = addOns.find(item => item.id === idString);
 
                 addOnElement.getElementsByClassName('name')[0].textContent = addOn.name;
-                addOnElement.getElementsByClassName('price')[0].textContent = this.#formData.duration == 'monthly' ? `+$${addOn.price.monthly}/mo` : `+$${addOn.price.yearly}/yr`;
+                addOnElement.getElementsByClassName('price')[0].textContent = this.formData.duration == 'monthly' ? `+$${addOn.price.monthly}/mo` : `+$${addOn.price.yearly}/yr`;
                 docFrag.appendChild(addOnElement);
             }
-            document.querySelector(".total .price").textContent = `+$${this.#getTotalPrice()}/${this.#formData.duration == 'monthly' ? '/mo' : 'yr'}`;
+            document.querySelector(".total .price").textContent = `+$${this.#getTotalPrice()}/${this.formData.duration == 'monthly' ? '/mo' : 'yr'}`;
             const container = summaryPage.getElementsByClassName('addOns')[0];
             container.innerHTML = "";
             container.appendChild(docFrag);
@@ -131,31 +127,18 @@ class FormTab {
         }, { once: true }))
     }
 
-    #setupPlan() {
-        const planSection = this.#container.querySelector('.pricing');
-        const planInputs = planSection.querySelectorAll("[name='pricing-plan']");
-        const switchRadios = planSection.querySelectorAll('.switch');
-        switchRadios.forEach(el => el.onclick = e => {
-            this.#formData.duration = e.target.value;
-            planSection.setAttribute("data-duration", e.target.value);
-        });
-        planInputs.forEach(el => el.onclick = e => {
-            this.#formData.plan = e.target.value;
-        });
-    }
-
     #setupAddOns() {
         const aoSection = this.#container.querySelector('.add-ons');
         const addOns = aoSection.querySelectorAll('input');
 
         addOns.forEach(el => {
-            if (el.checked) this.#formData.addOns.push(el.dataset.id);
+            if (el.checked) this.formData.addOns.push(el.dataset.id);
             el.oninput = e => {
                 const { currentTarget: t } = e;
                 if (t.checked == true) {
-                    this.#formData.addOns.push(t.dataset.id);
+                    this.formData.addOns.push(t.dataset.id);
                 } else {
-                    this.#formData.addOns = this.#formData.addOns.filter(v => v !== t.dataset.id);
+                    this.formData.addOns = this.formData.addOns.filter(v => v !== t.dataset.id);
                 }
             }
         })
@@ -169,15 +152,15 @@ class FormTab {
 
 
     #getSubPrice() {
-        const { plan: p, duration: d } = this.#formData;
+        const { plan: p, duration: d } = this.formData;
         let price = p === 'pro' ? 15 : p === 'advanced' ? 12 : 9;
         return d === 'yearly' ? `+$${price*10}/yr` : `+$${price}/mo`
     }
 
     #getTotalPrice() {
-        const { plan: p, duration: d } = this.#formData;
+        const { plan: p, duration: d } = this.formData;
         const subscriptionPrice = p === 'pro' ? 15 : p === 'advanced' ? 12 : 9;
-        return this.#formData.addOns.reduce((t, v) => t + addOns.find(a => a.id == v).price[d], 0) + subscriptionPrice;
+        return this.formData.addOns.reduce((t, v) => t + addOns.find(a => a.id == v).price[d], 0) + subscriptionPrice;
     }
 
     init() {
@@ -187,7 +170,6 @@ class FormTab {
         this.#form.onsubmit = e => this.#stillValidating && this.#submit(e);
 
         this.#setupInfo();
-        this.#setupPlan();
         this.#setupAddOns();
         this.#setupSummary();
 
@@ -223,5 +205,3 @@ class FormTab {
 
 const gameForm = new FormTab('main', 'gaming-subscription');
 gameForm.init();
-
-// https://youtu.be/bOdJA1mVuCE?si=aEljwS1eaC3AJoZJ

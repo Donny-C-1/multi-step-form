@@ -1,3 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -38,59 +43,11 @@
 }
 
 body {
-    display: grid;
-    place-items: center;
-    min-height: 100vh;
     font-family: Ubuntu, 'Open Sans', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: var(--fw-normal);
     background-image: linear-gradient(45deg, var(--magnolia), var(--alabaster));
 }
-
-main {
-    --intersect: 4rem;
-    display: grid;
-    width: 100%;
-    grid-template-rows: auto var(--intersect) 1fr;
-    grid-template-columns: 1fr;
-    min-height: 100vh;
-    background-color: var(--magnolia);
-    overflow: hidden;
-}
-
 /* #region Sidebar */
-
-.sidebar {
-    padding-bottom: var(--intersect);
-    grid-area: 1 / 1 / 3 / -1;
-    background-image: url('../assets/images/bg-sidebar-mobile.svg');
-    background-size: cover;
-}
-
-.sidebar ul {
-    display: flex;
-    justify-content: center;
-    padding: 1.5rem 1rem 2rem;
-    gap: 1.5rem;
-    list-style-type: none;
-}
-
-.sidebar button {
-    background-color: transparent;
-    color: var(--white);
-    font-weight: var(--fw-bold);
-    border-radius: 50%;
-    padding: 0 .725rem;
-    aspect-ratio: 1;
-    border: .1rem solid currentColor;
-    transition: all .4s ease, scale .15s ease;
-}
-
-.sidebar button:hover {
-    background-color: var(--light-blue);
-    color: var(--marine-blue);
-    border-color: var(--light-blue);
-    cursor: pointer;
-}
 
 .sidebar button:active {
     scale: .9;
@@ -102,45 +59,11 @@ main {
     border-color: var(--light-blue);
 }
 
-.sidebar .tab-item {
-    display: none;
-}
-
 /* #endregion */
 
-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    grid-area: 2 / 1 / 4 / -1;
-}
-
-.form-content {
-    width: 80%;
-    margin: 0 auto;
-    padding: 1rem;
-    border-radius: .4rem;
-    background-color: var(--white);
-}
-
-form .heading {
-    color: var(--marine-blue);
-    font-weight: var(--fw-bolder);
-    margin-bottom: .4rem;
-}
-
-form .sub-heading {
-    color: var(--cool-gray);
-    margin-bottom: 1rem;
-}
 
 /* #region Section 1 - Personal Info */
-.personal-info label {
-    display: block;
-    position: relative;
-    margin-bottom: 1rem;
-    font-size: var(--fs-200);
-}
+
 
 .personal-info .error-message {
     display: none;
@@ -190,8 +113,8 @@ form .sub-heading {
 
 .pricing label {
     flex: 33.33333333334%;
-    display: block;
-    margin-bottom: 1rem;
+    /* display: block; */
+    /* margin-bottom: 1rem; */
 }
 
 .pricing input {
@@ -219,16 +142,6 @@ form .sub-heading {
 
 .pricing-plan img {
     width: 2rem;
-}
-
-.pricing .plan-name {
-    color: var(--marine-blue);
-    font-weight: var(--fw-bold);
-}
-
-.pricing .plan-price {
-    color: var(--cool-gray);
-    margin: .5rem 0;
 }
 
 .pricing .discount {
@@ -466,49 +379,10 @@ form .sub-heading {
 
 /* #endregion */
 
-@media screen and (min-width: 45rem) {
-    main {
-        min-height: 29rem;
-        max-width: 50rem;
-        padding: 1rem;
-        grid-template-columns: 1fr 2.25fr;
-        grid-template-rows: 1fr;
-    }
+@media screen and (min-width: 48rem) {
 
     /* #region Sidebar */
-    main {
-        --brs: .325rem;
-        border-radius: var(--brs);
-        box-shadow: 0 0 .25rem rgba(0, 0, 0, .3);
-        background-color: var(--white);
-    }
 
-    .sidebar {
-        grid-area: 1 / 1 / 2 / 2;
-        padding: 0;
-        background-image: url('../assets/images/bg-sidebar-desktop.svg');
-        background-size: cover;
-        border-radius: var(--brs);
-    }
-
-    .sidebar ul {
-        flex-direction: column;
-    }
-
-    .sidebar ul li {
-        display: flex;
-        gap: .75rem;
-        align-items: center;
-    }
-
-    .sidebar .tab-item {
-        display: block;
-    }
-
-    .sidebar .tab-step {
-        color: var(--cool-gray);
-        font-size: var(--fs-200);
-    }
 
     .sidebar .tab-text {
         color: var(--white);
@@ -519,21 +393,7 @@ form .sub-heading {
 
     /* #endregion */
 
-    form {
-        grid-area: 1 / 2 / 2 / 3;
-        margin: 0 2rem 0 3rem;
-        /* margin: 0 auto; */
-    }
-    
-    .form-content {
-        width: 100%;
-    }
-
     /* #region Pricing */
-    .pricing > div {
-        display: flex;
-        gap: .5rem;
-    }
 
     .pricing .pricing-plan {
         flex-direction: column;

@@ -9,8 +9,8 @@
   <meta name='keywords' content='frontendmentor, form' />
   <meta name='viewport' content='width=device-width, initial-scale=1.0' />
   <link rel='icon' type='image/png' sizes='32x32' href='./assets/images/favicon-32x32.png' />
-  <link rel='stylesheet' href='./css/style.css' />
-  <script src='./js/script.js' defer></script>
+  <link rel="stylesheet" href="/dist/css/style.css" />
+  <script type="module" src='./js/script.js'></script>
 </head>
 
 <body>
@@ -35,33 +35,40 @@
   <!--,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,-->
   <!--#endregion-->
 
-  <main>
+  <main class="min-h-screen flex flex-col md:flex-row md:p-4 bg-blue-50 md:bg-white">
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <ul class="form-nav">
-        <li><button type="button" data-toggle="tab" class="active">1</button>
-          <div class="tab-item">
-            <p class="tab-step">Step 1</p>
+    <!-- * Sidebar -->
+    <div class="sidebar | md:basis-96 md:rounded-xl bg-sideNavMobile md:bg-sideNavDesktop bg-cover pb-12">
+      <ul class="flex md:flex-col justify-center p-8 gap-6 list-none">
+        <li class="flex gap-3 items-center">
+          <button type="button" data-toggle="tab"
+            class="active bg-transparent text-white font-medium rounded-full px-3 aspect-square border-2 border-solid border-current hover:bg-light-blue hover:border-light-blue hover:text-marine-blue transition-all duration-300">1</button>
+          <div class="hidden md:block">
+            <p class="text-sm text-cool-gray">Step 1</p>
             <p class="tab-text">Your Info</p>
           </div>
         </li>
-        <li><button type="button" data-toggle="tab">2</button>
-          <div class="tab-item">
-            <p class="tab-step">Step 2</p>
+        <li class="flex gap-3 items-center">
+          <button type="button" data-toggle="tab"
+            class="bg-transparent text-white font-medium rounded-full px-3 aspect-square border-2 border-solid border-current transition-all duration-300 hover:bg-light-blue hover:text-marine-blue hover:border-light-blue">2</button>
+          <div class="hidden md:block">
+            <p class="text-sm text-cool-gray">Step 2</p>
             <p class="tab-text">Select Plan</p>
           </div>
         </li>
-        <li><button type="button" data-toggle="tab">3</button>
-          <div class="tab-item">
-            <p class="tab-step">Step 3</p>
+        <li class="flex gap-3 items-center">
+          <button type="button" data-toggle="tab"
+            class="bg-transparent text-white font-medium rounded-full px-3 aspect-square border-2 border-solid border-current transition-all duration-300 hover:bg-light-blue hover:text-marine-blue hover:border-light-blue">3</button>
+          <div class="hidden md:block">
+            <p class="text-sm text-cool-gray">Step 3</p>
             <p class="tab-text">ADD ONS</p>
           </div>
         </li>
-        <li>
-          <button type="button" data-toggle="tab">4</button>
-          <div class="tab-item">
-            <p class="tab-step">Step 4</p>
+        <li class="flex gap-3 items-center">
+          <button type="button" data-toggle="tab"
+            class="bg-transparent text-white font-medium rounded-full px-3 aspect-square border-2 border-solid border-current transition-all duration-300 hover:bg-light-blue hover:text-marine-blue hover:border-light-blue">4</button>
+          <div class="hidden md:block">
+            <p class="text-sm text-cool-gray">Step 4</p>
             <p class="tab-text">Summary</p>
           </div>
         </li>
@@ -69,89 +76,65 @@
     </div>
 
     <!-- Form -->
-    <form action="./" method="post" name="gaming-subscription" autofocus>
-      <div class="form-content">
-        <section class="tab personal-info" data-name="tab" hidden>
-          <h2 class="heading">Personal Info</h2>
-          <p class="sub-heading">Please provide your name, email, address, and phone number.</p>
+    <form class="flex flex-col basis-full grow justify-between py-6" action="./" method="post" name="gaming-subscription"
+      autofocus>
+      <div class="form-content | w-10/12 mx-auto p-4 rounded-md bg-white relative md:static -top-20 -mb-20">
 
-          <label for="user-name">
+        <!-- *
+          *Personal Info Section
+        *-->
+
+        <section class="tab personal-info" data-name="tab" hidden>
+          <h2 class="text-3xl text-marine-blue font-medium mb-2">Personal Info</h2>
+          <p class="mb-4 text-gray-500">Please provide your name, email, address, and phone number.</p>
+
+          <label for="user-name" class="block mb-4 text-sm">
             <span>Name</span>
             <input type="text" placeholder="e.g. Stephen King" name="name" id="user-name" pattern="[A-z ]+"
               title="Must contain only letters" required />
             <span class="error-message">This field is required</span>
           </label>
 
-          <label for="user-mail">
+          <label for="user-mail" class="block relative mb-4 text-sm">
             <span>Email Address</span>
             <input type="email" placeholder="e.g. stephenking@lorem.com" id="user-email" name="email" multiple
               required />
             <span class="error-message">This field is required</span>
           </label>
 
-          <label for="user-phoneNo">
+          <label for="user-phoneNo" class="block relative mb-4 text-sm">
             <span>Phone Number</span>
             <input type="tel" placeholder="e.g. +1 234 567 890" id="user-phoneNo" name="phoneNo" required />
             <span class="error-message">This field is required</span>
           </label>
+
+          <input type="text" is="text-input">
         </section>
 
+        <!-- *
+          *Pricing
+        * -->
         <section class="tab pricing" data-duration="monthly" data-name="tab" hidden>
-          <h2 class="heading">Select you plan</h2>
-          <p class="sub-heading">You have the option of monthly or yearly billing</p>
-          <div>
-            <label for="arcade-pricing-plan">
-              <input type="radio" name="pricing-plan" id="arcade-pricing-plan" value="arcade" required checked />
-              <div class="pricing-plan">
-                <img src="./assets/images/icon-arcade.svg" alt="" />
-                <div>
-                  <p class="plan-name">Arcade</p>
-                  <p class="plan-price"><span class="month-option">$9/mo</span><span class="year-option">$90/yr</span>
-                  </p>
-                  <p class="year-option discount">2 months free</p>
-                </div>
-              </div>
-            </label>
+          <h2 class="text-3xl text-marine-blue font-medium mb-2">Select you plan</h2>
+          <p class="mb-4 text-gray-500">You have the option of monthly or yearly billing</p>
+          <div class="md:flex md:gap-6">
+            <pricing-plan class="rounded-md" checked>
+              <img src="./assets/images/icon-arcade.svg" alt="">
+              <span>Arcade</span>
+            </pricing-plan>
 
-            <label for="advanced-pricing-plan">
-              <input type="radio" name="pricing-plan" id="advanced-pricing-plan" value="advanced" required />
-              <div class="pricing-plan">
-                <img src="./assets/images/icon-advanced.svg" alt="" />
-                <div>
-                  <p class="plan-name">Advanced</p>
-                  <p class="plan-price"><span class="month-option">$12/mo</span><span class="year-option">$120/yr</span>
-                  </p>
-                  <p class="year-option discount">2 months free</p>
-                </div>
-              </div>
-            </label>
+            <pricing-plan>
+              <img src="./assets/images/icon-advanced.svg" alt="">
+              <span>Advanced</span>
+            </pricing-plan>
 
-            <label for="pro-pricing-plan">
-              <input type="radio" name="pricing-plan" id="pro-pricing-plan" value="pro" required />
-              <div class="pricing-plan">
-                <img src="./assets/images/icon-pro.svg" alt="" />
-                <div>
-                  <p class="plan-name">Pro</p>
-                  <p class="plan-price"><span class="month-option">$15/mo</span><span class="year-option">$150/yr</span>
-                  </p>
-                  <p class="year-option discount">2 months free</p>
-                </div>
-              </div>
-            </label>
+            <pricing-plan>
+              <img src="./assets/images/icon-pro.svg" alt="">
+              <span>Pro</span>
+            </pricing-plan>
           </div>
-          <div class="choice">
-            <span class="choice-month">Monthly</span>
-            <div class="radio-switch">
-              <input class="switch" type="radio" name="subscription-plan-duration" id="radio-switch-1" value="monthly" checked />
-              <input class="switch" type="radio" name="subscription-plan-duration" id="radio-switch-2" value="yearly">
-              <div class="inner">
-                  <label for="radio-switch-1"></label>
-                  <label for="radio-switch-2"></label>
-                  <div class="inner-circle"></div>
-              </div>
-          </div>
-            <span class="choice-year">Yearly</span>
-          </div>
+          
+          <switch-button></switch-button>
         </section>
 
         <section class="tab add-ons" data-duration="monthly" data-name="tab" hidden>
@@ -159,7 +142,8 @@
           <p class="sub-heading">Add-ons help improve your gaming performance</p>
 
           <label for="add-on-online-service">
-            <input type="checkbox" name="online-service" id="add-on-online-service" value="online-service" data-id="001" />
+            <input type="checkbox" name="online-service" id="add-on-online-service" value="online-service"
+              data-id="001" />
             <div class="add-on">
               <div>
                 <p class="add-on-name">Online Service</p>
@@ -170,7 +154,8 @@
           </label>
 
           <label for="add-on-larger-storage">
-            <input type="checkbox" name="larger-storage" id="add-on-larger-storage" value="larger-storage" data-id="002" />
+            <input type="checkbox" name="larger-storage" id="add-on-larger-storage" value="larger-storage"
+              data-id="002" />
             <div class="add-on">
               <div>
                 <p class="add-on-name">Larger Storage</p>
@@ -206,7 +191,7 @@
                 </div>
                 <p class="sub-price">$9/mo</p>
               </div>
-              
+
               <hr />
               <div class="addOns">
                 <template class="addOn-template">
@@ -217,7 +202,7 @@
                 </template>
               </div>
             </div>
-            
+
             <div class="flex-between total">
               <p class="name">Total (per month)</p>
               <p class="price">$12/mo</p>
@@ -228,7 +213,8 @@
         <section class="conclusion" hidden>
           <img src="./assets/images/icon-thank-you.svg" alt="" />
           <h2>Thanks</h2>
-          <p>Thanks for confirming your subscription. We hope you have fun using our platform. If you ever need support,
+          <p>Thanks for confirming your subscription. We hope you have fun using our platform. If you ever need
+            support,
             please feel free to email us at support@loremgaming.com</p>
         </section>
       </div>

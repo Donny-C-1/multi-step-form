@@ -47,60 +47,6 @@ body {
     font-weight: var(--fw-normal);
     background-image: linear-gradient(45deg, var(--magnolia), var(--alabaster));
 }
-/* #region Sidebar */
-
-.sidebar button:active {
-    scale: .9;
-}
-
-.sidebar button.active {
-    background-color: var(--light-blue);
-    color: var(--marine-blue);
-    border-color: var(--light-blue);
-}
-
-/* #endregion */
-
-
-/* #region Section 1 - Personal Info */
-
-
-.personal-info .error-message {
-    display: none;
-    color: var(--strawberry-red);
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-weight: var(--fw-bold);
-}
-
-.personal-info input {
-    display: block;
-    position: relative;
-    width: 100%;
-    padding: .6rem 1rem;
-    margin-top: .25rem;
-    border-radius: .25rem;
-    color: var(--marine-blue);
-    border: .1rem solid var(--light-gray);
-    font-weight: var(--fw-bold);
-    cursor: pointer;
-    transition: all .4s ease;
-}
-
-.personal-info input:hover {
-    border-color: var(--marine-blue)
-}
-
-.personal-info [data-validate='true']:invalid {
-    border-color: var(--strawberry-red);
-}
-
-.personal-info [data-validate='true']:invalid + .error-message {
-    display: block;
-}
-
-/* #endregion */
 
 /* #region Section 2 - Pricing Plans */
 [data-duration='monthly'] .year-option {
@@ -225,54 +171,6 @@ body {
 
 /* #endregion */
 
-/* #region Section 3 - Add ons */
-.add-ons label {
-    display: flex;
-    position:  relative;
-    margin-bottom: 1rem;
-}
-
-.add-ons input {
-    position: absolute;
-    top: 50%;
-    left: 1.2rem;
-    translate: 0 -50%;
-    cursor: pointer;
-}
-
-.add-ons .add-on {
-    display: flex;
-    width: 100%;
-    font-size: var(--fs-300);
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    padding: .8rem 1.2rem .8rem 3rem;
-    border: .1rem solid var(--light-gray);
-    border-radius: 0.35rem;
-    cursor: pointer;
-    transition: .4s ease;
-}
-
-.add-ons input:checked + .add-on, label:hover .add-on {
-    border-color: var(--purplish-blue);
-}
-
-.add-ons .add-on-name {
-    color: var(--marine-blue);
-    font-weight: var(--fw-bold);
-    margin-bottom: .25rem;
-}
-
-.add-ons .add-on-text {
-    color: var(--cool-gray);
-}
-
-.add-on .price {
-    color: var(--purplish-blue);
-}
-/* #endregion */
-
 /* #region Section 4 - Summary */
 .summary .sub-dur {
     text-transform: capitalize;
@@ -334,64 +232,8 @@ body {
 
 /* #endregion */
 
-/* #region Section 5 - Conclusion */
-.conclusion {
-    text-align: center;
-    padding: 4rem 0;
-}
-/* #endregion */
-
-/* #region Form Controls */
-.form-controls {
-    display: flex;
-    align-items: baseline;
-    padding: 1rem;
-    background-color: var(--white);
-}
-
-.form-controls button {
-    color: var(--cool-gray);
-    border: 0;
-    background-color: transparent;
-    padding: .7rem 1.4rem;
-    transition: .3s ease, scale .2s ease;
-    border-radius: .3rem;
-    cursor: pointer;
-}
-
-.form-controls .back:hover {
-    color: var(--marine-blue);
-}
-
-.form-controls .next {
-    margin-left: auto;
-    background-color: var(--marine-blue);
-    color: var(--white);
-}
-
-.form-controls .next:hover {
-    background-color: var(--purplish-blue);
-}
-
-.form-controls button:active {
-    scale: .975;
-}
-
-/* #endregion */
 
 @media screen and (min-width: 48rem) {
-
-    /* #region Sidebar */
-
-
-    .sidebar .tab-text {
-        color: var(--white);
-        font-weight: var(--fw-bold);
-        text-transform: uppercase;
-        font-size: var(--fs-300);
-    }
-
-    /* #endregion */
 
     /* #region Pricing */
 
@@ -402,8 +244,4 @@ body {
         flex: 1;
     }
     /* #endregion */
-
-    .form-controls {
-        padding: 0 1rem;
-    }
 }

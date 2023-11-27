@@ -40,84 +40,56 @@
     <!-- * Sidebar -->
     <div class="sidebar | md:basis-96 md:rounded-xl bg-sideNavMobile md:bg-sideNavDesktop bg-cover pb-12">
       <ul class="flex md:flex-col justify-center p-8 gap-6 list-none">
-        <li class="flex gap-3 items-center">
-          <button type="button" data-toggle="tab"
-            class="active bg-transparent text-white font-medium rounded-full px-3 aspect-square border-2 border-solid border-current hover:bg-light-blue hover:border-light-blue hover:text-marine-blue transition-all duration-300">1</button>
-          <div class="hidden md:block">
-            <p class="text-sm text-cool-gray">Step 1</p>
-            <p class="tab-text">Your Info</p>
-          </div>
+        <li>
+          <tab-button>Your Info</tab-button>
         </li>
-        <li class="flex gap-3 items-center">
-          <button type="button" data-toggle="tab"
-            class="bg-transparent text-white font-medium rounded-full px-3 aspect-square border-2 border-solid border-current transition-all duration-300 hover:bg-light-blue hover:text-marine-blue hover:border-light-blue">2</button>
-          <div class="hidden md:block">
-            <p class="text-sm text-cool-gray">Step 2</p>
-            <p class="tab-text">Select Plan</p>
-          </div>
+        <li>
+          <tab-button>Select Plans</tab-button>
         </li>
-        <li class="flex gap-3 items-center">
-          <button type="button" data-toggle="tab"
-            class="bg-transparent text-white font-medium rounded-full px-3 aspect-square border-2 border-solid border-current transition-all duration-300 hover:bg-light-blue hover:text-marine-blue hover:border-light-blue">3</button>
-          <div class="hidden md:block">
-            <p class="text-sm text-cool-gray">Step 3</p>
-            <p class="tab-text">ADD ONS</p>
-          </div>
+        <li>
+          <tab-button>Add ons</tab-button>
         </li>
-        <li class="flex gap-3 items-center">
-          <button type="button" data-toggle="tab"
-            class="bg-transparent text-white font-medium rounded-full px-3 aspect-square border-2 border-solid border-current transition-all duration-300 hover:bg-light-blue hover:text-marine-blue hover:border-light-blue">4</button>
-          <div class="hidden md:block">
-            <p class="text-sm text-cool-gray">Step 4</p>
-            <p class="tab-text">Summary</p>
-          </div>
+        <li>
+          <tab-button>Summary</tab-button>
         </li>
+        
       </ul>
     </div>
 
-    <!-- Form -->
-    <form class="flex flex-col basis-full grow justify-between py-6" action="./" method="post" name="gaming-subscription"
+    <!-- * Form -->
+    <form is="form-element" class="flex flex-col basis-full grow justify-between pt-6" action="./" method="post" name="gaming-subscription"
       autofocus>
-      <div class="form-content | w-10/12 mx-auto p-4 rounded-md bg-white relative md:static -top-20 -mb-20">
+      <div class="form-content | w-10/12 mx-auto p-4 rounded-md bg-white relative md:static -top-20 -mb-20 md:mb-0">
 
-        <!-- *
+        <!-- *--------------------
           *Personal Info Section
-        *-->
+        *------------------------->
 
         <section class="tab personal-info" data-name="tab" hidden>
           <h2 class="text-3xl text-marine-blue font-medium mb-2">Personal Info</h2>
           <p class="mb-4 text-gray-500">Please provide your name, email, address, and phone number.</p>
 
-          <label for="user-name" class="block mb-4 text-sm">
-            <span>Name</span>
-            <input type="text" placeholder="e.g. Stephen King" name="name" id="user-name" pattern="[A-z ]+"
-              title="Must contain only letters" required />
-            <span class="error-message">This field is required</span>
-          </label>
+          <text-input>
+            <props type="text" placeholder="e.g Donny C" name="Name" required></props>
+          </text-input>
 
-          <label for="user-mail" class="block relative mb-4 text-sm">
-            <span>Email Address</span>
-            <input type="email" placeholder="e.g. stephenking@lorem.com" id="user-email" name="email" multiple
-              required />
-            <span class="error-message">This field is required</span>
-          </label>
+          <text-input>
+            <props type="email" placeholder="e.g donny@c.tech" name="Email" required></props>
+          </text-input>
 
-          <label for="user-phoneNo" class="block relative mb-4 text-sm">
-            <span>Phone Number</span>
-            <input type="tel" placeholder="e.g. +1 234 567 890" id="user-phoneNo" name="phoneNo" required />
-            <span class="error-message">This field is required</span>
-          </label>
+          <text-input>
+            <props type="tel" placeholder="e.g. +1 234 567 890" name="Phone Number" required></props>
+          </text-input>
 
-          <input type="text" is="text-input">
         </section>
 
-        <!-- *
+        <!-- *-------
           *Pricing
-        * -->
+        *----------->
         <section class="tab pricing" data-duration="monthly" data-name="tab" hidden>
           <h2 class="text-3xl text-marine-blue font-medium mb-2">Select you plan</h2>
           <p class="mb-4 text-gray-500">You have the option of monthly or yearly billing</p>
-          <div class="md:flex md:gap-6">
+          <div class="md:flex md:gap-6 mb-10">
             <pricing-plan class="rounded-md" checked>
               <img src="./assets/images/icon-arcade.svg" alt="">
               <span>Arcade</span>
@@ -137,91 +109,57 @@
           <switch-button></switch-button>
         </section>
 
+        <!-- *-------
+          *Add ons
+        *----------->
         <section class="tab add-ons" data-duration="monthly" data-name="tab" hidden>
-          <h2 class="heading">Pick add-ons</h2>
-          <p class="sub-heading">Add-ons help improve your gaming performance</p>
+          <h2 class="text-3xl text-marine-blue font-medium mb-2">Pick add-ons</h2>
+          <p class="mb-4 text-gray-500">Add-ons help improve your gaming performance</p>
 
-          <label for="add-on-online-service">
-            <input type="checkbox" name="online-service" id="add-on-online-service" value="online-service"
-              data-id="001" />
-            <div class="add-on">
-              <div>
-                <p class="add-on-name">Online Service</p>
-                <p class="add-on-text">Access to multiplayer games</p>
-              </div>
-              <p class="price"><span class="month-option">+$1/mo</span><span class="year-option">+$10/yr</span></p>
-            </div>
-          </label>
+          <ul>
+            <li>
+              <add-on />
+            </li>
 
-          <label for="add-on-larger-storage">
-            <input type="checkbox" name="larger-storage" id="add-on-larger-storage" value="larger-storage"
-              data-id="002" />
-            <div class="add-on">
-              <div>
-                <p class="add-on-name">Larger Storage</p>
-                <p class="add-on-text">Extra 1TB of cloud storage</p>
-              </div>
-              <p class="price"><span class="month-option">+$2/mo</span><span class="year-option">+$20/yr</span></p>
-            </div>
-          </label>
+            <li>
+              <add-on />
+            </li>
 
-          <label for="add-on-cusotmizable-profile">
-            <input type="checkbox" name="customizable-profile" id="add-on-cusotmizable-profile"
-              value="customizable-profile" data-id="003" />
-            <div class="add-on">
-              <div>
-                <p class="add-on-name">Customizable Profile</p>
-                <p class="add-on-text">Custom theme on your profile</p>
-              </div>
-              <p class="price"><span class="month-option">+$2/mo</span><span class="year-option">+$12/yr</span></p>
-            </div>
-          </label>
+            <li>
+              <add-on />
+            </li>
+            
+          </ul>
 
         </section>
 
+        <!-- *-------
+          *Summary 
+        *----------->
         <section class="tab summary" data-name="tab" hidden>
-          <h2 class="heading">Finishing up</h2>
-          <p class="sub-heading">Double check everything looks OK before confirming</p>
+          <h2 class="text-3xl text-marine-blue font-medium mb-2">Finishing up</h2>
+          <p class="mb-4 text-gray-500">Double check everything looks OK before confirming</p>
+          <summary-div></summary-div>
+          
+        </section>
+
+        <!-- *------------
+          *Conclusion
+        *---------------->
+        <section class="conclusion | text-center py-16" hidden>
           <div>
-            <div class="group">
-              <div class="flex-between">
-                <div>
-                  <h3 data-placeholder="subscription" class="sub-dur">Playboy (Monthly)</h3>
-                  <button type="button" class="change">Change</button>
-                </div>
-                <p class="sub-price">$9/mo</p>
-              </div>
-
-              <hr />
-              <div class="addOns">
-                <template class="addOn-template">
-                  <div class="flex-between">
-                    <p class="name"></p>
-                    <p class="price"></p>
-                  </div>
-                </template>
-              </div>
-            </div>
-
-            <div class="flex-between total">
-              <p class="name">Total (per month)</p>
-              <p class="price">$12/mo</p>
-            </div>
+            <img src="./assets/images/icon-thank-you.svg" alt="" width="100%" height="auto" class="block w-16 aspect-square mx-auto" />
+            <h2 class="text-3xl text-marine-blue font-medium mt-8 mb-4">Thank you!</h2>
+            <p class="text-cool-gray max-w-sm mx-auto">Thanks for confirming your subscription. We hope you have fun using our platform. If you ever need
+              support,
+              please feel free to email us at support@loremgaming.com</p>
           </div>
         </section>
-
-        <section class="conclusion" hidden>
-          <img src="./assets/images/icon-thank-you.svg" alt="" />
-          <h2>Thanks</h2>
-          <p>Thanks for confirming your subscription. We hope you have fun using our platform. If you ever need
-            support,
-            please feel free to email us at support@loremgaming.com</p>
-        </section>
       </div>
-      <div class="form-controls">
-        <button type="button" class="back" data-toggle="prev" hidden>Go Back</button>
-        <button type="button" class="next" data-toggle="next">Next Step</button>
-        <button type="submit" value="submit" class="next" hidden>submit</button>
+      <div class="controls | flex items-baseline p-4 bg-white ">
+        <button is="prev-button" data-toggle="prev">Go Back</button>
+        <button is="next-button" data-toggle="next"></button>
+        <button type="submit" value="submit" class="text-white bg-marine-blue ml-auto border-0 px-6 py-3 transition-all duration-300 rounded-md cursor-pointer" hidden>Confirm</button>
       </div>
     </form>
   </main>

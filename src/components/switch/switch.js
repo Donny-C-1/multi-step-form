@@ -24,10 +24,13 @@ class Switch extends HTMLElement {
         this.innerHTML = html;
 
         //* Add Event Listener
-        this.querySelectorAll('input').forEach(el => el.addEventListener('input', (e) => {
-            formData.duration = e.target.value;
-            [].forEach.call(document.getElementsByTagName("pricing-plan"), (pEl) => pEl.updateDuration(e.target.value));
-        }));
+        this.querySelectorAll('input').forEach(el => el.addEventListener('input', e => this.#inputHandler(e)));
+    }
+
+    #inputHandler(e) {
+        formData.duration = e.target.value;
+        [].forEach.call(document.getElementsByTagName("pricing-plan"), (pEl) => pEl.updateDuration(e.target.value));
+        [].forEach.call(document.getElementsByTagName('add-on'), aoEl => aoEl.setAttribute('data-duration', e.target.value));
     }
 }
 

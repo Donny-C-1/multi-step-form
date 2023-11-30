@@ -6,6 +6,7 @@ import AddOn from "../components/addOn/addOn.js";
 import Switch from "../components/switch/switch.js";
 import NextButton from "../components/nextButton/nextButton.js";
 import PrevButton from "../components/prevButton/prevButton.js"
+import SubmitButton from "../components/submitButton/submit-button.js";
 import Summary from "../components/summary/summary.js";
 import { formData } from "./state.js";
 
@@ -17,6 +18,7 @@ customElements.define("switch-button", Switch);
 customElements.define('add-on', AddOn);
 customElements.define("next-button", NextButton, { extends: 'button' });
 customElements.define("prev-button", PrevButton, { extends: 'button' });
+customElements.define("submit-button", SubmitButton, { extends: 'button' });
 customElements.define("summary-div", Summary);
 
 document.querySelector('tab-button button').click();

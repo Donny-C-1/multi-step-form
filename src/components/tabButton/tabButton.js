@@ -2,9 +2,13 @@ import { state } from "../../js/state.js";
 
 class TabButton extends HTMLElement {
     #index;
+    #btnFunc
     constructor() {
         super();
+        this.#btnFunc = this.#clickHandler.bind(this);
     }
+
+    static observedAttributes = ['disabled', 'data-active' ];
 
     connectedCallback() {
         // * Add Attributes
@@ -27,38 +31,31 @@ class TabButton extends HTMLElement {
         if (this.#index == 0) document.querySelector('button').classList.add('active');
 
         //* Add Events
-        this.querySelector('button').addEventListener('click', () => {
-            state.tabIndex = this.#index;
+        this.querySelector('button').addEventListener('click', this.#btnFunc);
+    }
 
-            const tabBtns = document.querySelectorAll('tab-button button');
-            const tabs = document.querySelectorAll('.tab');
-            const prevBtn = document.querySelector("[is='prev-button']");
-            const nextBtn = document.querySelector("[is='next-button']");
-            const submitBtn = nextBtn.nextElementSibling;
+    attributeChangedCallback(name, oldvalue, newValue) {
+        if (name === 'disabled' && newValue === 'true') this.#removeHandler();
+        if (name === 'data-active') this.#setActive(newValue);
+    }
 
-            if (this.#index == 0) {
-                prevBtn.setAttribute('hidden', true);
-            } else {
-                prevBtn.removeAttribute('hidden');
-            }
-            if (this.#index == 3) {
-                nextBtn.setAttribute('hidden', true);
-                submitBtn.removeAttribute('hidden');
-            } else {
-                nextBtn.removeAttribute('hidden');
-                submitBtn.setAttribute('hidden', true);
-            }
+    #clickHandler(e) {
+        state.tabIndex = this.#index;
 
-            tabs.forEach(el => el.setAttribute('hidden', true));
-            tabs[this.#index].removeAttribute('hidden');
-
-            tabBtns.forEach(el => el.classList.remove('active'));
-            tabBtns[this.#index].classList.add('active');
-        })
+        document.querySelector('form').setAttribute('data-tab', this.#index);
     }
 
     #removeHandler() {
-        //
+        this.querySelector('button').removeEventListener('click', this.#btnFunc);
+    }
+
+    #setActive(val) {
+        const btn = this.querySelector('button');
+        if (val == 'true') {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
     }
 }
 

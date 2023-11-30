@@ -15,8 +15,8 @@ class AddOn extends HTMLElement {
         let { name: n, details: d } = this.#props, { monthly: pm } = this.#props.price;
 
         const html = `
-        <label class='group flex relative mb-4'>
-            <input class='peer absolute top-1/2 left-5' type="checkbox" name="" id="" value="" />
+        <label class='group flex relative mb-4 items-center'>
+            <input class='peer absolute left-5 cursor-pointer' type="checkbox" name="" id="" value="" />
             <div class='flex w-full text-sm justify-between items-center gap-4 py-3 ps-12 pe-5 border-2 border-solid border-light-gray rounded-md cursor-pointer transition-all duration-300 peer-checked:border-purplish-blue group-hover:border-purplish-blue'>
                 <div>
                     <p class='text-marine-blue font-medium mb-1'>${n}</p>
@@ -27,6 +27,9 @@ class AddOn extends HTMLElement {
         </label>
         `
         this.innerHTML = html;
+
+        // * Add Events
+        this.querySelector('input').addEventListener('input', e => this.#clickHandler(e));
     }
 
     attributeChangedCallback(name, _oldValue, newValue) {
@@ -36,6 +39,11 @@ class AddOn extends HTMLElement {
     #updateDuration(v) {
         const prefix = { monthly: 'mo', yearly: 'yr'};
         this.querySelector('.price').textContent = `+$${this.#props.price[v]}/${prefix[v]}`;
+    }
+
+    #clickHandler(e) {
+        const summaryElement = document.querySelector('summary-div');
+        summaryElement.updateState('add-on', this.#props, e.currentTarget.checked);
     }
 }
 

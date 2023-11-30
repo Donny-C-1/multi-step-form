@@ -41,6 +41,7 @@ class PricingPlan extends HTMLElement {
     }
 
     updatePlan() {
+        document.querySelector('summary-div').setAttribute('data-plan', this.#name);
         formData.plan = this.#name;
     }
 

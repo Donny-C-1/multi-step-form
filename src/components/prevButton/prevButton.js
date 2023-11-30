@@ -13,17 +13,11 @@ class PrevButton extends HTMLButtonElement {
 
         //* Add Events
         this.addEventListener('click', () => {
-            const tabs = document.querySelectorAll('.tab');
+            const tabBtns = document.querySelectorAll('tab-button');
+
             state.tabIndex--;
-            if (state.tabIndex == 0) {
-                this.setAttribute('hidden', true);
-            }
-            if (state.tabIndex == 2) {
-                this.nextElementSibling.removeAttribute('hidden');
-                this.nextElementSibling.nextElementSibling.setAttribute('hidden', true);
-            }
-            tabs.forEach(el => el.setAttribute('hidden', true));
-            tabs[state.tabIndex].removeAttribute('hidden');
+
+            document.querySelector('form').setAttribute('data-tab', state.tabIndex);
         })
     }
 }

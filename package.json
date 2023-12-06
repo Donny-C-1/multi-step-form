@@ -1,27 +1,17 @@
 {
-  "name": "multi-step-form-main",
-  "version": "1.0.0",
-  "description": "A front-end mentor challenge",
-  "main": "index.js",
+  "name": "multi-step-form",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "tailwind": "npx tailwindcss -i ./src/css/style.css -o ./dist/css/style.css --watch"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Donny-C-1/multi-step-form.git"
-  },
-  "keywords": [
-    "front-end",
-    "mentor"
-  ],
-  "author": "Donny C",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Donny-C-1/multi-step-form/issues"
-  },
-  "homepage": "https://github.com/Donny-C-1/multi-step-form#readme",
-  "dependencies": {
-    "tailwindcss": "^3.3.5"
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5",
+    "vite": "^5.0.0"
   }
 }

@@ -10,9 +10,8 @@ class PricingPlan extends HTMLElement {
         this.#imgSrc = this.querySelector('img').src;
         this.#props = plans.find(v => v.name.toLowerCase() === this.#name.toLowerCase());
     }
-
+    
     connectedCallback() {
-
         // *Make the input element
         const inputElement = document.createElement('input');
         inputElement.setAttribute('type', 'radio');

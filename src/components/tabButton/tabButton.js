@@ -40,8 +40,6 @@ class TabButton extends HTMLElement {
     }
 
     #clickHandler(e) {
-        state.tabIndex = this.#index;
-
         document.querySelector('form').setAttribute('data-tab', this.#index);
     }
 

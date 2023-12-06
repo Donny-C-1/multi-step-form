@@ -8,13 +8,9 @@ class NextButton extends HTMLButtonElement {
     }
 
     connectedCallback() {
+        // * Add Events
         this.addEventListener('click', () => {
-            let bool = true;
-            document.querySelectorAll('text-input input').forEach(el => bool = bool && el.checkValidity());
-            if (state.tabIndex == '0' && bool == false) return;
-            state.tabIndex++;
-            document.querySelector('form').setAttribute('data-tab', state.tabIndex);
-
+            document.querySelector('form').setAttribute('data-tab', Number(state.tabIndex) + 1);
         })
     }
 }

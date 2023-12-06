@@ -1,3 +1,5 @@
+import { state } from "../../js/state.js";
+
 class Form extends HTMLFormElement {
     constructor() {
         super();
@@ -6,23 +8,16 @@ class Form extends HTMLFormElement {
     static observedAttributes = [ 'data-tab' ];
 
     connectedCallback() {
-        // * Add Events
-        this.addEventListener('submit', this.#submitHandler);
     }
 
-    #submitHandler(e) {
-        e.preventDefault();
-
-        const tabs = this.querySelectorAll('.tab');
-        tabs.forEach(el => el.setAttribute('hidden', true));
-        this.querySelector('.conclusion').removeAttribute('hidden');
-        this.querySelector('.controls').setAttribute('hidden', true);
-        this.querySelector('.controls').classList.add('hidden');
-        document.querySelectorAll('tab-button').forEach(el => el.setAttribute('disabled', true));
-    }
-
-    attributeChangedCallback(name, _oldvalue, newValue) {
-        if (name == 'data-tab') this.#displayTab(newValue);
+    attributeChangedCallback(name, oldvalue, newValue) {
+        if (name == 'data-tab') {
+            if (oldvalue && state.tabIndex == '0' && this.#validate() == false) {
+                this.querySelectorAll('text-input').forEach(el => el.setAttribute('data-validate', true));
+                return;
+            }
+            this.#displayTab(newValue);
+        }
     }
 
     #displayTab(index) {
@@ -32,6 +27,18 @@ class Form extends HTMLFormElement {
         const submitBtn = this.querySelector("button[type='submit']");
         const tabBtns = document.querySelectorAll('tab-button');
 
+        state.tabIndex = index;
+
+        if (index === '5') {
+            tabs.forEach(el => el.setAttribute('hidden', true));
+            this.querySelector('.conclusion').removeAttribute('hidden');
+            this.querySelector('.controls').setAttribute('hidden', true);
+            this.querySelector('.controls').classList.add('hidden');
+            tabBtns.forEach(el => el.setAttribute('disabled', true));
+            return;
+        }
+        console.log(tabs);
+        console.log(index);
         tabs.forEach(el => el.setAttribute('hidden', true));
         tabs[index].removeAttribute('hidden');
 
@@ -50,6 +57,10 @@ class Form extends HTMLFormElement {
             nextBtn.removeAttribute('hidden');
             submitBtn.setAttribute('hidden', true);
         }
+    }
+
+    #validate() {
+        return [].reduce.call(this.querySelectorAll('text-input input'), (bool, el) => bool && el.checkValidity(), true);
     }
 }
 

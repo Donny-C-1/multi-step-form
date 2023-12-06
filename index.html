@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
 
 <head>
   <title>Frontend Mentor | Multi-step form</title>
@@ -8,13 +8,12 @@
   <meta name='description' content='A simple multi-step form component' />
   <meta name='keywords' content='frontendmentor, form' />
   <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-  <link rel='icon' type='image/png' sizes='32x32' href='./assets/images/favicon-32x32.png' />
-  <link rel="stylesheet" href="/dist/css/style.css" />
-  <script type="module" src='./js/script.js'></script>
+  <link rel='icon' type='image/png' sizes='32x32' href='./src/assets/images/favicon-32x32.png' />
+  <link rel="stylesheet" href="./src/css/style.css" />
+  <script type="module" src='./src/js/script.js'></script>
 </head>
 
 <body>
-
   <!--#region-->
   <!--,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,-->
   <!--..dddddddd...................................................................................................cccccc............................-->
@@ -52,13 +51,13 @@
         <li>
           <tab-button>Summary</tab-button>
         </li>
-        
+
       </ul>
     </div>
 
     <!-- * Form -->
-    <form is="form-element" class="flex flex-col basis-full grow justify-between pt-6" action="./" method="post" name="gaming-subscription"
-      autofocus>
+    <form is="form-element" class="flex flex-col basis-full grow justify-between pt-6" action="./" method="post"
+      name="gaming-subscription" autofocus>
       <div class="form-content | w-10/12 mx-auto p-4 rounded-md bg-white relative md:static -top-20 -mb-20 md:mb-0">
 
         <!-- *--------------------
@@ -91,21 +90,21 @@
           <p class="mb-4 text-gray-500">You have the option of monthly or yearly billing</p>
           <div class="md:flex md:gap-6 mb-10">
             <pricing-plan class="rounded-md" checked>
-              <img src="./assets/images/icon-arcade.svg" alt="">
+              <img src="./src/assets/images/icon-arcade.svg" alt="">
               <span>Arcade</span>
             </pricing-plan>
 
             <pricing-plan>
-              <img src="./assets/images/icon-advanced.svg" alt="">
+              <img src="./src/assets/images/icon-advanced.svg" alt="">
               <span>Advanced</span>
             </pricing-plan>
 
             <pricing-plan>
-              <img src="./assets/images/icon-pro.svg" alt="">
+              <img src="./src/assets/images/icon-pro.svg" alt="">
               <span>Pro</span>
             </pricing-plan>
           </div>
-          
+
           <switch-button></switch-button>
         </section>
 
@@ -128,7 +127,7 @@
             <li>
               <add-on />
             </li>
-            
+
           </ul>
 
         </section>
@@ -140,7 +139,7 @@
           <h2 class="text-3xl text-marine-blue font-medium mb-2">Finishing up</h2>
           <p class="mb-4 text-gray-500">Double check everything looks OK before confirming</p>
           <summary-div></summary-div>
-          
+
         </section>
 
         <!-- *------------
@@ -148,9 +147,11 @@
         *---------------->
         <section class="conclusion | text-center py-16" hidden>
           <div>
-            <img src="./assets/images/icon-thank-you.svg" alt="" width="100%" height="auto" class="block w-16 aspect-square mx-auto" />
+            <img src="./src/assets/images/icon-thank-you.svg" alt="" width="100%" height="auto"
+              class="block w-16 aspect-square mx-auto" />
             <h2 class="text-3xl text-marine-blue font-medium mt-8 mb-4">Thank you!</h2>
-            <p class="text-cool-gray max-w-sm mx-auto">Thanks for confirming your subscription. We hope you have fun using our platform. If you ever need
+            <p class="text-cool-gray max-w-sm mx-auto">Thanks for confirming your subscription. We hope you have fun
+              using our platform. If you ever need
               support,
               please feel free to email us at support@loremgaming.com</p>
           </div>
@@ -168,18 +169,6 @@
       </div>
     </form>
   </main>
-
 </body>
 
 </html>
-
-<!-- <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style> -->
-
-
-<!-- <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div> -->

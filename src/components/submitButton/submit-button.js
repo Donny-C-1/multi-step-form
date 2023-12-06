@@ -1,3 +1,5 @@
+import { state } from "../../js/state.js";
+
 class SubmitButton extends HTMLButtonElement {
     constructor() {
         super();
@@ -11,17 +13,15 @@ class SubmitButton extends HTMLButtonElement {
 
     #clickHandler(e) {
         e.preventDefault();
+        if (state.tabIndex == '0') return;
         const form = document.querySelector("[is='form-element']");
         const inputs = form.querySelectorAll('text-input input');
-        let bool = true;
-
-        inputs.forEach(el => bool = bool && el.checkValidity());
-        if (bool == false) {
+        if (!([].reduce.call(inputs, (bool, el) => bool && el.checkValidity, true))) {
             form.setAttribute('data-tab', 0);
         } else {
-            form.submit();
+            form.setAttribute('data-tab', '5');
         }
-    }
+    } 
 }
 
 export default SubmitButton;

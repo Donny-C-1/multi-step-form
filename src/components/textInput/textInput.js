@@ -7,6 +7,8 @@ class textInput extends HTMLElement {
         }
     }
 
+    static observedAttributes = [ 'data-validate' ];
+
     connectedCallback() {
         Object.assign(this.#props, ...Array.from(this.querySelector('props').attributes, ({name, value}) => ({[name]: value})));
 
@@ -17,9 +19,18 @@ class textInput extends HTMLElement {
 
         // * Add Events
         this.querySelector('input').addEventListener('focus', e => {
-            e.currentTarget.className += ' peer invalid:border-strawberry-red';
+            const { currentTarget: t } = e;
+            e.classList.add('peer');
+            e.classList.add('invalid:border-strawberry-red');
         }, { once: true });
         this.querySelector('input').addEventListener('input', e => this.#inputHandler(e))
+    }
+
+    attributeChangedCallback(name, _oldValue, newValue) {
+        if (name === 'data-validate' && newValue == 'true') {
+            this.querySelector('input').classList.add('peer');
+            this.querySelector('input').classList.add('invalid:border-strawberry-red');
+        }
     }
 
     #render() {

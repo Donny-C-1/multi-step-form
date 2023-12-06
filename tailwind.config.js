@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ["./src/**/*.{html, js}", "*.{html, js}", "./src/components/*/*.js"],
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.js",
+    "./src/components/**/*.js"
+  ],
   theme: {
     extend: {
       backgroundImage: {
@@ -19,7 +23,6 @@ module.exports = {
         "alabaster": "hsl(231, 100%, 99%)",
       }
     },
-  },
-  plugins: [],
+    plugins: [],
+  }
 }
-
